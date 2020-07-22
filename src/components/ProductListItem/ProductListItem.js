@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class ProductListItem extends Component {
+  addProductToCart = () => {
+    console.log(this.props.product);
+    // TODO: Dispatch here
+    this.props.dispatch({
+      type: 'ADD_TO_CART',
+      payload: this.props.product.name,
+    });
+  };
 
-    addProductToCart = () => {
-        console.log(this.props.product);
-        // TODO: Dispatch here
-        
-    }
-
-    render() {
-        return (
-            <li>
-                {this.props.product.name}: {this.props.product.price} <button onClick={this.addProductToCart}>Add to Cart</button>
-            </li>
-        )
-    }
+  render() {
+    return (
+      <li>
+        {this.props.product.name}: {this.props.product.price}{' '}
+        <button onClick={this.addProductToCart}>Add to Cart</button>
+      </li>
+    );
+  }
 }
 
-export default ProductListItem;
+export default connect()(ProductListItem);

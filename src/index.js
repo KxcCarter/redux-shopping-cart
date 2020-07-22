@@ -11,7 +11,7 @@ import logger from 'redux-logger';
 // Default set of products
 const products = [
   { name: `Marshmallow Mateys`, price: 6.98 },
-  { name: `Golden Honney O's`, price: 6.48 },
+  { name: `Golden Honey O's`, price: 6.48 },
   { name: `Frosted Flakes`, price: 3.98 },
 ];
 
@@ -25,7 +25,9 @@ const productReducer = (state = products, action) => {
 
 // Items in the cart, this reducer is incomplete
 const checkoutReducer = (state = [], action) => {
-  // TODO: Products added to the cart
+  if (action.type === 'ADD_TO_CART') {
+    return [...state, action.payload];
+  }
 
   return state;
 };
