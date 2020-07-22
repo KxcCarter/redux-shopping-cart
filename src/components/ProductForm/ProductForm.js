@@ -20,13 +20,10 @@ class ProductForm extends Component {
 
   addProduct = (event) => {
     event.preventDefault();
-    // TODO: Dispatch here
-
     this.props.dispatch({
       type: 'ADD_NEW_PRODUCT',
       payload: this.state.productToAdd,
     });
-    // this.props.addNewProduct(this.state.productToAdd);
   };
 
   render() {

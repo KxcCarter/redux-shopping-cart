@@ -29,6 +29,10 @@ const checkoutReducer = (state = [], action) => {
     return [...state, action.payload];
   } else if (action.type === 'CLEAR_CART') {
     return [];
+  } else if (action.type === 'DELETE_FROM_CART') {
+    return state.filter((item, index) => {
+      return action.payload !== index;
+    });
   }
 
   return state;

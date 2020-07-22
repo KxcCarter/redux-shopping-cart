@@ -8,12 +8,24 @@ class Checkout extends Component {
     });
   };
 
+  handleClickDelete = (index) => {
+    this.props.dispatch({
+      type: 'DELETE_FROM_CART',
+      payload: index,
+    });
+  };
+
   render() {
     const cartList = this.props.cart.map((item, index) => {
       return (
         <tr key={index}>
           <td>{item.name} </td>
           <td>{item.price}</td>
+          <td onClick={(event) => this.handleClickDelete(index)}>
+            <span role="img" aria-label="delete from cart">
+              ❌
+            </span>
+          </td>
         </tr>
       );
     });
