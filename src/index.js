@@ -27,6 +27,8 @@ const productReducer = (state = products, action) => {
 const checkoutReducer = (state = [], action) => {
   if (action.type === 'ADD_TO_CART') {
     return [...state, action.payload];
+  } else if (action.type === 'CLEAR_CART') {
+    return [];
   }
 
   return state;
