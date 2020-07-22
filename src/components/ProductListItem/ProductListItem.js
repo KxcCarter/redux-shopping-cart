@@ -7,7 +7,7 @@ class ProductListItem extends Component {
     // TODO: Dispatch here
     this.props.dispatch({
       type: 'ADD_TO_CART',
-      payload: this.props.product.name,
+      payload: this.props.product,
     });
   };
 
