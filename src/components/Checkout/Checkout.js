@@ -8,7 +8,7 @@ class Checkout extends Component {
     });
   };
 
-  handleClickDelete = (index) => {
+  handleClickDelete = (index) => (event) => {
     this.props.dispatch({
       type: 'DELETE_FROM_CART',
       payload: index,
@@ -21,7 +21,7 @@ class Checkout extends Component {
         <tr key={index}>
           <td>{item.name} </td>
           <td>{item.price}</td>
-          <td onClick={(event) => this.handleClickDelete(index)}>
+          <td onClick={this.handleClickDelete(index)}>
             <span role="img" aria-label="delete from cart">
               ❌
             </span>
