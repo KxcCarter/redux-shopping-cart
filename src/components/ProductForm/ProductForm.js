@@ -6,7 +6,7 @@ class ProductForm extends Component {
   // if you're only using something in one component,
   // you do not need to move it to redux
   state = {
-    productToAdd: { name: '', price: 0 },
+    productToAdd: { name: '', price: '' },
   };
 
   handleChange = (fieldKey) => (event) => {
@@ -24,13 +24,27 @@ class ProductForm extends Component {
       type: 'ADD_NEW_PRODUCT',
       payload: this.state.productToAdd,
     });
+
+    this.setState({
+      productToAdd: { name: '', price: '' },
+    });
   };
 
   render() {
     return (
       <form onSubmit={this.addProduct}>
-        <input onChange={this.handleChange('name')} type="text" placeholder="name" />
-        <input onChange={this.handleChange('price')} type="text" placeholder="price" />
+        <input
+          onChange={this.handleChange('name')}
+          type="text"
+          placeholder="name"
+          value={this.state.productToAdd.name}
+        />
+        <input
+          onChange={this.handleChange('price')}
+          type="text"
+          placeholder="price"
+          value={this.state.productToAdd.price}
+        />
         <input type="submit" value="Submit" />
       </form>
     );

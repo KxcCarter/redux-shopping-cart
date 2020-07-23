@@ -7,11 +7,13 @@ class ProductList extends Component {
   render() {
     return (
       <div>
-        <ul>
-          {this.props.products.map((product, i) => {
-            return <ProductListItem key={i} index={i} product={product} />;
-          })}
-        </ul>
+        <table>
+          <tbody>
+            {this.props.products.map((product, i) => {
+              return <ProductListItem key={i} index={i} product={product} />;
+            })}
+          </tbody>
+        </table>
       </div>
     );
   }

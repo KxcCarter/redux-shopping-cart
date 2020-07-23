@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 class ProductListItem extends Component {
   addProductToCart = () => {
-    console.log(this.props.product);
     this.props.dispatch({
       type: 'ADD_TO_CART',
       payload: this.props.product,
@@ -11,7 +10,6 @@ class ProductListItem extends Component {
   };
 
   deleteProduct = (index) => (event) => {
-    console.log('we will delete', index);
     this.props.dispatch({
       type: 'DELETE_PRODUCT',
       payload: index,
@@ -20,11 +18,16 @@ class ProductListItem extends Component {
 
   render() {
     return (
-      <li>
-        {this.props.product.name}: {this.props.product.price}{' '}
-        <button onClick={this.addProductToCart}>Add to Cart</button>
-        <button onClick={this.deleteProduct(this.props.index)}>Delete from inventory</button>
-      </li>
+      <tr>
+        <td>{this.props.product.name}</td>
+        <td>{this.props.product.price}</td>
+        <td>
+          <button onClick={this.addProductToCart}>Add to Cart</button>
+        </td>
+        <td>
+          <button onClick={this.deleteProduct(this.props.index)}>Delete from inventory</button>
+        </td>
+      </tr>
     );
   }
 }
