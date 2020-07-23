@@ -10,11 +10,20 @@ class ProductListItem extends Component {
     });
   };
 
+  deleteProduct = (index) => (event) => {
+    console.log('we will delete', index);
+    this.props.dispatch({
+      type: 'DELETE_PRODUCT',
+      payload: index,
+    });
+  };
+
   render() {
     return (
       <li>
         {this.props.product.name}: {this.props.product.price}{' '}
         <button onClick={this.addProductToCart}>Add to Cart</button>
+        <button onClick={this.deleteProduct(this.props.index)}>Delete from inventory</button>
       </li>
     );
   }
